@@ -1,0 +1,14 @@
+﻿{
+  "version": "0.0.1",
+  "dependencies": {
+    "Sitecore.Commerce.Core": "1.0.*",
+    "Sitecore.Commerce.Plugin.Orders": "1.0.*"
+  },
+  "frameworks": {
+    "net452": {
+
+    }
+  },
+  "configurations": {
+  }
+}
