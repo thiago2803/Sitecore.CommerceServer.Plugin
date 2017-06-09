@@ -24,6 +24,11 @@ namespace Sitecore.Foundation.Commerce.Engine.Plugin.EPF.Commands
 
         public async Task<Order> Process(CommerceContext commerceContext, string cartId, string email)
         {
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(cartId))
+            {
+                return null;
+            }
+
             Activity activity = TransactionalCommandActivity.Start(commerceContext, (CommerceCommand)this);
             Order order;
             try

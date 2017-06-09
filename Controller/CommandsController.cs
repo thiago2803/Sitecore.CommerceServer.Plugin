@@ -22,12 +22,28 @@ namespace Sitecore.Foundation.Commerce.Engine.Plugin.EPF.Controllers
         /// <param name="value">The value.</param>
         /// <returns></returns>
         [HttpPut]
-        [Route("CreateFileCommand()")]
-        public IActionResult SampleCommand([FromBody] ODataActionParameters value)
+        [Route("CreateFile()")]
+        public IActionResult CreateFileCommand([FromBody] ODataActionParameters value)
         {
             var id = value["Id"].ToString();
             var command = Command<CreateFileCommand>();
             var result = command.Process(CurrentContext, id, string.Empty).Result;
+
+            return new ObjectResult(command);
+        }
+
+        /// <summary>
+        /// Samples the command.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetFile()")]
+        public IActionResult GetFileCommand()
+        {
+            //var id = value["Id"].ToString();
+            var command = Command<CreateFileCommand>();
+            var result = command.Process(CurrentContext, string.Empty, string.Empty).Result;
 
             return new ObjectResult(command);
         }

@@ -37,13 +37,14 @@ namespace Sitecore.Foundation.Commerce.Engine.Plugin.EPF
             services.Sitecore().Pipelines(config => config
              .AddPipeline<SamplePipeline, SamplePipeline>(
                     configure =>
-                        {
-                            configure.Add<SampleBlock>();
-                        })
+                    {
+                        configure.Add<SampleBlock>();
+                    })
             .AddPipeline<ICreateFilePipeline, CreateFilePipeline>(builder => builder
                 .Add<CreateFileBlock>())
+            .ConfigurePipeline<IConfigureServiceApiPipeline>(configure => configure.Add<Sitecore.Foundation.Commerce.Engine.Plugin.EPF.Pipelines.ConfigureServiceApiBlock>())
             );
-                
+
 
             services
                 .AddScoped<SampleCommand, SampleCommand>().AddScoped<CreateFileCommand, CreateFileCommand>();
